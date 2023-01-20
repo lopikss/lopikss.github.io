@@ -1,1 +1,1 @@
-hey everyone herre is mt ruffle project thingy idk if you use it id apriciate credirs lol
+you can freely use eny of my codes and stuff this ruffle embedder adds a full screen button that works with eny screen (this does not work on a https://sites.google.com website as google has restricted the use good luck :)
