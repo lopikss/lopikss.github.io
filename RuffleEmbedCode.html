@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <script>
+      window.RufflePlayer.config({
+        autoplay: "true",
+        fullscreen_context: "body",
+        native_fullscreen: true,
+        use_native_controls: true,
+      });
+      window.RufflePlayer.play();
+    </script>
+    <style>
+      #container {
+        height: 100vh;
+        position: relative;
+      }
+      #flash-content {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+      #fullscreen-button {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <embed
+        id="flash-content"
+        src="https://lopikss.github.io/flash-games/run.swf"
+        type="application/x-shockwave-flash"
+        width="800"
+        height="600"
+        allowfullscreen="true"
+      />
+      <button
+        id="fullscreen-button"
+        onclick="launchIntoFullscreen(document.getElementById('flash-content'));"
+      >
+        Fullscreen
+      </button>
+    </div>
+  </body>
+  <script>
+    function launchIntoFullscreen(element) {
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+    }
+    var offsetX = -3;
+    var offsetY = -5;
+    var button = document.getElementById("fullscreen-button");
+    var buttonWidth = (-button.clientWidth + 399 + offsetX).toString();
+    var buttonHeight = (-button.clientHeight + 301 + offsetY).toString();
+    button.style.transform =
+      "translate(" + buttonWidth + "px," + buttonHeight + "px)";
+  </script>
+</html>
