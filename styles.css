@@ -1,9 +1,26 @@
-.black-bar {
-    background-color: black;
-    height: 50px;
+.top-bar {
+    background-color: #2f3136;
+    height: 56px;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    color: white;
+}
+body {
+    background-color: #36393f;
+    margin: 0;
+    padding: 0;
+}
+.text-container {
+    padding-top: 56px;
+}
+.text-white {
+    color: white;
 }
