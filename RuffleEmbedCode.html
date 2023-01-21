@@ -3,12 +3,10 @@
   <head>
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <script>
-      window.RufflePlayer.config({
-        autoplay: "true",
-        fullscreen_context: "body",
-        native_fullscreen: true,
-        use_native_controls: true,
-      });
+      window.RufflePlayer.config = {
+        "autoplay": "on",
+        "unmuteOverlay": "hidden",
+      };
       window.RufflePlayer.play();
     </script>
     <style>
