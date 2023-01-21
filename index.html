@@ -36,12 +36,10 @@
   <head>
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <script>
-      window.RufflePlayer.config({
-        autoplay: "auto"
-        fullscreen_context: "body",
-        native_fullscreen: true,
-        use_native_controls: true,
-      });
+      window.RufflePlayer.config = {
+        "autoplay": "on",
+        "unmuteOverlay": "hidden",
+      };
       window.RufflePlayer.play();
     </script>
     <style>
@@ -58,6 +56,12 @@
         transform: translate(-50%, -50%);
       }
       #fullscreen-button {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+      }
+      #credits-button {
         margin: 0;
         position: absolute;
         top: 50%;
@@ -81,6 +85,9 @@
       >
         Fullscreen
       </button>
+      <button id="credits-button" onclick="window.open('https://www.example.com', '_blank');">
+        credits
+      </button>
     </div>
   </body>
   <script>
@@ -97,11 +104,15 @@
     }
     var offsetX = -3;
     var offsetY = -5;
-    var button = document.getElementById("fullscreen-button");
-    var buttonWidth = (-button.clientWidth + 399 + offsetX).toString();
-    var buttonHeight = (-button.clientHeight + 301 + offsetY).toString();
-    button.style.transform =
-      "translate(" + buttonWidth + "px," + buttonHeight + "px)";
-//credits do me (lopikss) and Wasapea (he made the fullscreen button work 10x better)
+    var fullscreenButton = document.getElementById("fullscreen-button");
+    var customLinkButton = document.getElementById("credits-button");
+    var fullscreenButtonWidth = (-fullscreenButton.clientWidth + 399.5 + offsetX).toString();
+    var fullscreenButtonHeight = (-fullscreenButton.clientHeight + 301 + offsetY).toString();
+    fullscreenButton.style.transform =
+      "translate(" + fullscreenButtonWidth + "px," + fullscreenButtonHeight + "px)";
+    var customLinkButtonWidth = (-customLinkButton.clientWidth + 398.7 + offsetX).toString();
+    var customLinkButtonHeight = (-customLinkButton.clientHeight + 279.84 + offsetY).toString();
+    customLinkButton.style.transform =
+      "translate(" + customLinkButtonWidth + "px," + customLinkButtonHeight + "px)";
   </script>
 </html>
