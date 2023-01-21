@@ -7,20 +7,41 @@
     left: 0;
     z-index: 1;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
-h1 {
+
+.top-bar-title {
     color: white;
+    margin-left: 20px;
 }
+
 body {
     background-color: #36393f;
     margin: 0;
     padding: 0;
 }
+
 .text-container {
     padding-top: 56px;
 }
+
 .text-white {
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none; 
+}
+
+a:visited { 
+    color: white;
+}
+
+a:hover { 
+    color: white;
+}
+
+a:active { 
     color: white;
 }
