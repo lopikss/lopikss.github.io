@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <a href="https://lopikss.github.io/games/bloxorz.swf" id="my-link"></a>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <script>
+      window.RufflePlayer.config = {
+        autoplay: "on",
+        unmuteOverlay: "hidden",
+        letterbox: "on",
+        contextMenu: false,
+        preloader: true,
+      };
+      window.RufflePlayer.play();
+    </script>
+    <style>
+      #container {
+        height: 100vh;
+        position: relative;
+      }
+      #flash-content {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+      #fullscreen-button {
+        margin: 0;
+        z-index: 2;
+        background-image: url('https://cdn-icons-png.flaticon.com/512/4705/4705983.png');
+        background-size: cover;
+        background-color: rgba(255, 255, 255, 0);
+        border: 0;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        cursor: pointer;
+        top: 50%;
+        left: 50%;
+      }
+      #credits-button {
+        margin: 0;
+        z-index: 2;
+        background-image: url('https://cdn-icons-png.flaticon.com/512/6736/6736354.png');
+        background-size: cover;
+        background-color: rgba(255, 255, 255, 0);
+        border: 0.3;
+        border-color: rgba(255, 0, 0, 0);
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        cursor: pointer;
+        top: 50%;
+        left: 50%;
+     }
+     #menu-bar {
+       position: absolute;
+       z-index: 1;
+       top: 50%;
+       left: 50%;
+       width: 800px;
+       height: 48px;
+       background-color: rgba(97, 83, 97, 0.5);
+     }
+   
+
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <embed
+        id="flash-content"
+        src= "https://lopikss.github.io/games/bloxorz.swf"
+        type="application/x-shockwave-flash"
+        width="800"
+        height="600"
+        allowfullscreen="true"
+      />
+      <button
+        id="fullscreen-button" title="Fullscreen" 
+        onclick="launchIntoFullscreen(document.getElementById('flash-content'));"
+      >
+      </button>
+      <button 
+        id="credits-button" title="Information" 
+        onclick="window.open('https://www.example.com', '_blank');">
+      </button>
+    </div>
+    <div id="menu-bar"></div>
+  </body>
+  <script>
+    function launchIntoFullscreen(element) {
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+    }
+    var offsetX = -3;
+    var offsetY = -5;
+    var menuBar = document.getElementById("menu-bar");
+    var fullscreenButton = document.getElementById("fullscreen-button");
+    var customLinkButton = document.getElementById("credits-button");
+    var fullscreenButtonWidth = (-fullscreenButton.clientWidth + 398.9 + offsetX).toString();
+    var fullscreenButtonHeight = (-fullscreenButton.clientHeight + 301 + offsetY).toString();
+    fullscreenButton.style.transform =
+      "translate(" + fullscreenButtonWidth + "px," + fullscreenButtonHeight + "px)";
+    var customLinkButtonWidth = (-customLinkButton.clientWidth + 398.5 + offsetX).toString();
+    var customLinkButtonHeight = (-customLinkButton.clientHeight + -269 + offsetY).toString();
+    customLinkButton.style.transform =
+      "translate(" + customLinkButtonWidth + "px," + customLinkButtonHeight + "px)";
+    var menuBarWidth = (-menuBar.clientWidth + 403 + offsetX).toString();
+    var menuBarHeight = (-menuBar.clientHeight + 313 + offsetY).toString();
+    menuBar.style.transform =
+      "translate(" + menuBarWidth + "px," + menuBarHeight + "px)";
+  </script>
+</html>
