@@ -1,1 +1,0 @@
-# lopikss.github.io
