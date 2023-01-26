@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <a href="https://lopikss.github.io/games/bloxorz.swf" id="my-link"></a>
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <script>
       window.RufflePlayer.config = {
@@ -46,7 +45,7 @@
         background-image: url('https://cdn-icons-png.flaticon.com/512/6736/6736354.png');
         background-size: cover;
         background-color: rgba(255, 255, 255, 0);
-        border: 0.3;
+        border: 1;
         border-color: rgba(255, 0, 0, 0);
         width: 30px;
         height: 30px;
@@ -55,6 +54,21 @@
         top: 50%;
         left: 50%;
      }
+     #toggle-view {
+       position: absolute;
+       z-index: 2;
+       background-image: url('https://cdn-icons-png.flaticon.com/512/3687/3687641.png');
+       background-size: cover;
+       background-color: rgba(255, 255, 255, 0);
+       border: 1;
+       border-color: rgba(255, 255, 255, 1);
+       width: 30px;
+       height: 30px;
+       cursor: pointer;
+       top: 50%;
+       left: 50%;
+     }
+     
      #menu-bar {
        position: absolute;
        z-index: 1;
@@ -62,8 +76,9 @@
        left: 50%;
        width: 800px;
        height: 48px;
-       background-color: rgba(97, 83, 97, 0.5);
+       background-color: rgba(33, 34, 51, 0.9);
      }
+     
    
 
     </style>
@@ -78,18 +93,43 @@
         height="600"
         allowfullscreen="true"
       />
+      
       <button
         id="fullscreen-button" title="Fullscreen" 
         onclick="launchIntoFullscreen(document.getElementById('flash-content'));"
       >
       </button>
+      
       <button 
         id="credits-button" title="Information" 
         onclick="window.open('https://www.example.com', '_blank');">
       </button>
+      
+      <button id="toggle-view" onclick="cheato()"></button>
+      
     </div>
     <div id="menu-bar"></div>
   </body>
+  <script>
+    let cheato = () => {
+        let elements = document.querySelectorAll("#fullscreen-button, #credits-button, #menu-bar");
+        let button = document.getElementById("toggle-view");
+        let hidden = button.getAttribute("data-hidden") === "true";
+        elements.forEach(element => {
+            if (hidden) {
+                element.removeAttribute("hidden");
+                button.style.backgroundImage = "url('https://cdn-icons-png.flaticon.com/512/3687/3687641.png')";
+                button.setAttribute("data-hidden", "false");
+            } else {
+                element.setAttribute("hidden", "hidden");
+                button.style.backgroundImage = "url('https://cdn-icons-png.flaticon.com/512/3687/3687651.png')";
+                button.setAttribute("data-hidden", "true");
+            }
+        });
+    }
+ </script>
+
+
   <script>
     function launchIntoFullscreen(element) {
       if (element.requestFullscreen) {
@@ -104,6 +144,7 @@
     }
     var offsetX = -3;
     var offsetY = -5;
+    var toggleView = document.getElementById("toggle-view");
     var menuBar = document.getElementById("menu-bar");
     var fullscreenButton = document.getElementById("fullscreen-button");
     var customLinkButton = document.getElementById("credits-button");
@@ -111,13 +152,20 @@
     var fullscreenButtonHeight = (-fullscreenButton.clientHeight + 301 + offsetY).toString();
     fullscreenButton.style.transform =
       "translate(" + fullscreenButtonWidth + "px," + fullscreenButtonHeight + "px)";
+      
     var customLinkButtonWidth = (-customLinkButton.clientWidth + 398.5 + offsetX).toString();
     var customLinkButtonHeight = (-customLinkButton.clientHeight + -269 + offsetY).toString();
     customLinkButton.style.transform =
       "translate(" + customLinkButtonWidth + "px," + customLinkButtonHeight + "px)";
+      
     var menuBarWidth = (-menuBar.clientWidth + 403 + offsetX).toString();
     var menuBarHeight = (-menuBar.clientHeight + 313 + offsetY).toString();
     menuBar.style.transform =
       "translate(" + menuBarWidth + "px," + menuBarHeight + "px)";
+      
+    var toggleViewWidth = (-toggleView.clientWidth + 403 + offsetX).toString();
+    var toggleViewHeight = (-toggleView.clientHeight + 400 + offsetY).toString();
+    toggleView.style.transform =
+      "translate(" + toggleViewWidth + "px," + toggleViewHeight + "px)";
   </script>
 </html>
