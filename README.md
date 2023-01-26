@@ -2,3 +2,6 @@ you can always freely use the SimpleRuffleEmbedCode.html this wil always be a st
 
 
 RuffleEmbedCode.html might be unstable
+
+
+######## dont change enything in the code if you dont udnerstand what your doing
