@@ -12,6 +12,5 @@ i do recomand using EasyRuffleEmbedCode.html if your unknown to html
 3. toggle-view button
 4. download.swf button
 5. more features comming
-<br />
-<br />
+<br /> <br />
 note that the fullscreen button will not work on a website published on https://sites.google.com becouse of some restrictions i canot bypass
