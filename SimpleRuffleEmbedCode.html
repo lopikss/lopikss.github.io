@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+       var myLink = "your .swf link here";
+     </script>
+    
+    
+    
+    
+    
+    
+    
+    <if you dont know what your doing dont change enything here>
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <script>
       window.RufflePlayer.config = {
@@ -59,7 +70,7 @@
     <div id="container">
       <embed
         id="flash-content"
-        src="your .swf file link here"
+        src=""
         type="application/x-shockwave-flash"
         width="800"
         height="600"
@@ -75,6 +86,9 @@
         credits
       </button>
     </div>
+    <script>
+        document.getElementById("flash-content").src = myLink;
+    </script>
   </body>
   <script>
     function launchIntoFullscreen(element) {
