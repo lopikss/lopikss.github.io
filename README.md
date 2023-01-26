@@ -2,11 +2,11 @@
 embed flash games in to your own website. <br />
 i do recomand using EasyRuffleEmbedCode.html if your unknown to html
 
-## features for EasyRuffleEmbedCode.html
+### features for EasyRuffleEmbedCode.html
 1. fullscreen button
 2. simple embedding
 
-## features for RuffleEmbedCode.html
+### features for RuffleEmbedCode.html
 1. fullscreen button
 2. simple embedding 
 3. toggle-view button
