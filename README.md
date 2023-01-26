@@ -1,5 +1,5 @@
 # ruffle embed code
-embed flash games in to your own website.
+embed flash games in to your own website. without needint to download enything or install a extention.
 <br />
 all features will work with only changing the link at the top of the code all the other features will adapt and work
 <br />
