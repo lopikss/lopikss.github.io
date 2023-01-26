@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+     <script>
+       var myLink = "https://lopikss.github.io/games/bloxorz.swf";
+     </script>
+     
+     
+     
+     
+     
+    <!-- dont change enything here if you dont understand what your doing -->
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <script>
       window.RufflePlayer.config = {
@@ -12,6 +21,7 @@
       };
       window.RufflePlayer.play();
     </script>
+    
     <style>
       #container {
         height: 100vh;
@@ -87,7 +97,7 @@
     <div id="container">
       <embed
         id="flash-content"
-        src= "https://lopikss.github.io/games/bloxorz.swf"
+        src= ""
         type="application/x-shockwave-flash"
         width="800"
         height="600"
@@ -105,9 +115,11 @@
         onclick="window.open('https://www.example.com', '_blank');">
       </button>
       
-      <button id="toggle-view" onclick="cheato()"></button>
-      
-    </div>
+      <button id="toggle-view" onclick="cheato()"></button>    
+    </div>    
+     <script>
+        document.getElementById("flash-content").src = myLink;
+    </script>
     <div id="menu-bar"></div>
   </body>
   <script>
