@@ -46,11 +46,11 @@
         z-index: 2;
         background-image: url('https://cdn-icons-png.flaticon.com/512/4705/4705983.png');
         background-size: cover;
-        background-color: rgba(255, 255, 255, 0);
+        background-color: rgba(0, 0, 0, 0);
         border: 1;
-        border-color: rgba(255, 0, 0, 1);
-        width: 40px;
-        height: 40px;
+        border-color: rgba(0, 0, 0, 0);
+        width: 48.5px;
+        height: 48.5px;
         position: absolute;
         cursor: pointer;
         top: 50%;
@@ -105,7 +105,9 @@
      #menu-bar {
        position: absolute;
        z-index: 1;
-       background-color: rgba(33, 34, 51, 0.9);
+       background-color: rgba(33, 34, 51, 0.95);
+       border: 1;
+       border-color: rgba(255, 0, 0, 0);
        top: 50%;
        left: 50%;
        width: 800px;
@@ -142,6 +144,10 @@
         id="download-swf" title="download flash game on computer">
       </button>
       
+      <button
+        id="menu-bar">
+      </button>
+      
       <button 
       id="toggle-view" title="toggle overlay"
       onclick="cheato()">
@@ -152,16 +158,15 @@
         document.getElementById("flash-content").src = myLink;
     </script>
     <script>
-      var button = document.getElementById("download-swf");
+       var button = document.getElementById("download-swf");
         button.addEventListener("click", function(){
         window.location = myLink;
     });
     </script>
-    <div id="menu-bar"></div>
   </body>
   <script>
     let cheato = () => {
-        let elements = document.querySelectorAll("#fullscreen-button, #credits-button, #menu-bar");
+        let elements = document.querySelectorAll("#fullscreen-button, #credits-button, #menu-bar, #download-swf");
         let button = document.getElementById("toggle-view");
         let hidden = button.getAttribute("data-hidden") === "true";
         elements.forEach(element => {
@@ -193,11 +198,11 @@
     }
     var offsetX = -3;
     var offsetY = -5;
-    var toggleView = document.getElementById("toggle-view");
-    var menuBar = document.getElementById("menu-bar");
     var fullscreenButton = document.getElementById("fullscreen-button");
     var customLinkButton = document.getElementById("credits-button");
     var dowloadSWF = document.getElementById("download-swf");
+    var toggleView = document.getElementById("toggle-view");
+    var menuBar = document.getElementById("menu-bar");
     var fullscreenButtonWidth = (-fullscreenButton.clientWidth + 398.9 + offsetX).toString();
     var fullscreenButtonHeight = (-fullscreenButton.clientHeight + 301 + offsetY).toString();
     fullscreenButton.style.transform =
@@ -213,8 +218,8 @@
     dowloadSWF.style.transform =
       "translate(" + dowloadSWFWidth + "px," + dowloadSWFHeight + "px)";
       
-    var menuBarWidth = (-menuBar.clientWidth + 403 + offsetX).toString();
-    var menuBarHeight = (-menuBar.clientHeight + 313 + offsetY).toString();
+    var menuBarWidth = (-menuBar.clientWidth + 399 + offsetX).toString();
+    var menuBarHeight = (-menuBar.clientHeight + 300 + offsetY).toString();
     menuBar.style.transform =
       "translate(" + menuBarWidth + "px," + menuBarHeight + "px)";
       
