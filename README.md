@@ -1,5 +1,5 @@
 # ruffle embed code
-embed flash games in to your own website.
+embed flash games in to your own website. <br />
 i do recomand using EasyRuffleEmbedCode.html if your unknown to html
 
 ## features for EasyRuffleEmbedCode.html
