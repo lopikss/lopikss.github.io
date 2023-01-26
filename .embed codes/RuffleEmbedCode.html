@@ -7,8 +7,9 @@
 <html>
   <head>
      <script>
-       var myLink = "your .swf link here or use https://lopikss.github.io/games/gamename here";
+       var myLink = "https://lopikss.github.io/games/bloxorz.swf";
      </script>
+     
      
      
      
@@ -46,7 +47,8 @@
         background-image: url('https://cdn-icons-png.flaticon.com/512/4705/4705983.png');
         background-size: cover;
         background-color: rgba(255, 255, 255, 0);
-        border: 0;
+        border: 1;
+        border-color: rgba(255, 0, 0, 1);
         width: 40px;
         height: 40px;
         position: absolute;
@@ -69,6 +71,22 @@
         top: 50%;
         left: 50%;
      }
+     #download-swf {
+       margin: 0;
+       z-index: 2;
+       background-image: url('https://cdn-icons-png.flaticon.com/512/4705/4705934.png');
+       background-size: cover;
+       background-color: rgba(255, 255, 255, 0);
+       border: 1;
+       border-color: rgba(255, 0, 0, 1);
+       width: 30px;
+       height: 30px;
+       position: absolute;
+       cursor: pointer;
+       top: 50%;
+       left: 50%;
+       
+     }
      #toggle-view {
        position: absolute;
        z-index: 2;
@@ -76,7 +94,7 @@
        background-size: cover;
        background-color: rgba(255, 255, 255, 0);
        border: 1;
-       border-color: rgba(255, 255, 255, 1);
+       border-color: rgba(255, 0, 0, 1);
        width: 30px;
        height: 30px;
        cursor: pointer;
@@ -87,13 +105,15 @@
      #menu-bar {
        position: absolute;
        z-index: 1;
+       background-color: rgba(33, 34, 51, 0.9);
        top: 50%;
        left: 50%;
        width: 800px;
        height: 48px;
-       background-color: rgba(33, 34, 51, 0.9);
      }
-      
+     
+   
+
     </style>
   </head>
   <body>
@@ -118,10 +138,24 @@
         onclick="window.open('https://lopikss.github.io/webhost/credits.html', '_blank');">
       </button>
       
-      <button id="toggle-view" onclick="cheato()"></button>    
+      <button
+        id="download-swf" title="download flash game on computer">
+      </button>
+      
+      <button 
+      id="toggle-view" title="toggle overlay"
+      onclick="cheato()">
+      </button>  
+      
     </div>    
      <script>
         document.getElementById("flash-content").src = myLink;
+    </script>
+    <script>
+      var button = document.getElementById("download-swf");
+        button.addEventListener("click", function(){
+        window.location = myLink;
+    });
     </script>
     <div id="menu-bar"></div>
   </body>
@@ -163,6 +197,7 @@
     var menuBar = document.getElementById("menu-bar");
     var fullscreenButton = document.getElementById("fullscreen-button");
     var customLinkButton = document.getElementById("credits-button");
+    var dowloadSWF = document.getElementById("download-swf");
     var fullscreenButtonWidth = (-fullscreenButton.clientWidth + 398.9 + offsetX).toString();
     var fullscreenButtonHeight = (-fullscreenButton.clientHeight + 301 + offsetY).toString();
     fullscreenButton.style.transform =
@@ -173,13 +208,18 @@
     customLinkButton.style.transform =
       "translate(" + customLinkButtonWidth + "px," + customLinkButtonHeight + "px)";
       
+    var dowloadSWFWidth = (-dowloadSWF.clientWidth + 300 + offsetX).toString();
+    var dowloadSWFHeight = (-dowloadSWF.clientHeight + 250 + offsetY).toString();
+    dowloadSWF.style.transform =
+      "translate(" + dowloadSWFWidth + "px," + dowloadSWFHeight + "px)";
+      
     var menuBarWidth = (-menuBar.clientWidth + 403 + offsetX).toString();
     var menuBarHeight = (-menuBar.clientHeight + 313 + offsetY).toString();
     menuBar.style.transform =
       "translate(" + menuBarWidth + "px," + menuBarHeight + "px)";
       
-    var toggleViewWidth = (-toggleView.clientWidth + 403 + offsetX).toString();
-    var toggleViewHeight = (-toggleView.clientHeight + 400 + offsetY).toString();
+    var toggleViewWidth = (-toggleView.clientWidth + 300 + offsetX).toString();
+    var toggleViewHeight = (-toggleView.clientHeight + 300 + offsetY).toString();
     toggleView.style.transform =
       "translate(" + toggleViewWidth + "px," + toggleViewHeight + "px)";
   </script>
