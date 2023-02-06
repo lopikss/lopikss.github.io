@@ -1,0 +1,84 @@
+#container {
+        height: 100vh;
+        position: relative;
+      }
+      #flash-content {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+      #fullscreen-button {
+        margin: 0;
+        z-index: 2;
+        background-image: url('https://cdn-icons-png.flaticon.com/512/4705/4705983.png');
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0);
+        border: 1;
+        border-color: rgba(0, 0, 0, 0);
+        width: 48.5px;
+        height: 48.5px;
+        position: absolute;
+        cursor: pointer;
+        top: 50%;
+        left: 50%;
+      }
+      #credits-button {
+        margin: 0;
+        z-index: 2;
+        background-image: url('https://cdn-icons-png.flaticon.com/512/6736/6736354.png');
+        background-size: cover;
+        background-color: rgba(255, 255, 255, 0);
+        border: 1;
+        border-color: rgba(255, 0, 0, 0);
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        cursor: pointer;
+        top: 50%;
+        left: 50%;
+     }
+     #download-swf {
+       margin: 0;
+       z-index: 2;
+       background-image: url('https://cdn-icons-png.flaticon.com/512/4705/4705934.png');
+       background-size: cover;
+       background-color: rgba(255, 255, 255, 0);
+       border: 1;
+       border-color: rgba(255, 0, 0, 1);
+       width: 30px;
+       height: 30px;
+       position: absolute;
+       cursor: pointer;
+       top: 50%;
+       left: 50%;
+       
+     }
+     #toggle-view {
+       position: absolute;
+       z-index: 2;
+       background-image: url('https://cdn-icons-png.flaticon.com/512/3687/3687641.png');
+       background-size: cover;
+       background-color: rgba(255, 255, 255, 0);
+       border: 1;
+       border-color: rgba(255, 0, 0, 1);
+       width: 30px;
+       height: 30px;
+       cursor: pointer;
+       top: 50%;
+       left: 50%;
+     }
+     
+     #menu-bar {
+       position: absolute;
+       z-index: 1;
+       background-color: rgba(33, 34, 51, 0.95);
+       border: 1;
+       border-color: rgba(255, 0, 0, 0);
+       top: 50%;
+       left: 50%;
+       width: 800px;
+       height: 48px;
+     }
