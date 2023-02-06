@@ -1,4 +1,3 @@
-<script>
     function launchIntoFullscreen(element) {
       if (element.requestFullscreen) {
         element.requestFullscreen();
@@ -41,4 +40,3 @@
     var toggleViewHeight = (-toggleView.clientHeight + 300 + offsetY).toString();
     toggleView.style.transform =
       "translate(" + toggleViewWidth + "px," + toggleViewHeight + "px)";
-  </script>
