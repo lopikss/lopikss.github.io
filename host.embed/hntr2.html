@@ -58,7 +58,7 @@
         background-size: cover;
         background-color: rgba(255, 255, 255, 0);
         border: 1;
-        border-color: rgba(255, 0, 0, 0);
+        border-color: rgba(255, 0, 0, 1);
         width: 30px;
         height: 30px;
         position: absolute;
@@ -224,8 +224,8 @@
     menuBar.style.transform =
       "translate(" + menuBarWidth + "px," + menuBarHeight + "px)";
       
-    var toggleViewWidth = (-toggleView.clientWidth + 300 + offsetX).toString();
-    var toggleViewHeight = (-toggleView.clientHeight + 300 + offsetY).toString();
+    var toggleViewWidth = (-toggleView.clientWidth + -371 + offsetX).toString();
+    var toggleViewHeight = (-toggleView.clientHeight + -269 + offsetY).toString();
     toggleView.style.transform =
       "translate(" + toggleViewWidth + "px," + toggleViewHeight + "px)";
   </script>
