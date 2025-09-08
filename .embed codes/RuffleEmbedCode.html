@@ -1,4 +1,5 @@
 <!--im starting to work on it again 10/22/2024--> <!-- i have made no changes since 2024 it is now 09/08/2025 will i work on it again? who knows probably :3 no one reading this anyways but hehe-->
+ <!-- TURNS OUT IM WORKING ON IT 09/08/2025>
  <!--use with caution Script is unfinished!!!-->
 
 
@@ -46,6 +47,7 @@
         z-index: 2;
         background-image: url('https://cdn-icons-png.flaticon.com/512/4705/4705983.png');
         background-size: cover;
+        background-repeat: no-repeat;
         background-color: rgba(0, 0, 0, 0);
         border: 1;
         border-color: rgba(0, 0, 0, 0);
@@ -61,9 +63,10 @@
         z-index: 2;
         background-image: url('https://cdn-icons-png.flaticon.com/512/6736/6736354.png');
         background-size: cover;
-        background-color: rgba(255, 255, 255, 0);
+        background-repeat: no-repeat;
+        background-color: rgba(0, 0, 0, 0);
         border: 1;
-        border-color: rgba(255, 0, 0, 0);
+        border-color: rgba(0, 0, 0, 0);
         width: 30px;
         height: 30px;
         position: absolute;
@@ -76,9 +79,10 @@
        z-index: 2;
        background-image: url('https://cdn-icons-png.flaticon.com/512/4705/4705934.png');
        background-size: cover;
-       background-color: rgba(255, 255, 255, 0);
+       background-repeat: no-repeat;
+       background-color: rgba(0, 0, 0, 0);
        border: 1;
-       border-color: rgba(255, 0, 0, 1);
+       border-color: rgba(0, 0, 0, 0);
        width: 30px;
        height: 30px;
        position: absolute;
@@ -92,9 +96,10 @@
        z-index: 2;
        background-image: url('https://cdn-icons-png.flaticon.com/512/3687/3687641.png');
        background-size: cover;
-       background-color: rgba(255, 255, 255, 0);
+       background-repeat: no-repeat;
+       background-color: rgba(0, 0, 0, 0);
        border: 1;
-       border-color: rgba(255, 0, 0, 1);
+       border-color: rgba(255, 0, 0, 0);
        width: 30px;
        height: 30px;
        cursor: pointer;
@@ -203,6 +208,7 @@
     var dowloadSWF = document.getElementById("download-swf");
     var toggleView = document.getElementById("toggle-view");
     var menuBar = document.getElementById("menu-bar");
+
     var fullscreenButtonWidth = (-fullscreenButton.clientWidth + 398.9 + offsetX).toString();
     var fullscreenButtonHeight = (-fullscreenButton.clientHeight + 301 + offsetY).toString();
     fullscreenButton.style.transform =
@@ -213,8 +219,8 @@
     customLinkButton.style.transform =
       "translate(" + customLinkButtonWidth + "px," + customLinkButtonHeight + "px)";
       
-    var dowloadSWFWidth = (-dowloadSWF.clientWidth + 300 + offsetX).toString();
-    var dowloadSWFHeight = (-dowloadSWF.clientHeight + 250 + offsetY).toString();
+    var dowloadSWFWidth = (-dowloadSWF.clientWidth + -340 + offsetX).toString()
+    var dowloadSWFHeight = (-dowloadSWF.clientHeight + -269 + offsetY).toString();
     dowloadSWF.style.transform =
       "translate(" + dowloadSWFWidth + "px," + dowloadSWFHeight + "px)";
       
@@ -223,8 +229,8 @@
     menuBar.style.transform =
       "translate(" + menuBarWidth + "px," + menuBarHeight + "px)";
       
-    var toggleViewWidth = (-toggleView.clientWidth + 300 + offsetX).toString();
-    var toggleViewHeight = (-toggleView.clientHeight + 300 + offsetY).toString();
+    var toggleViewWidth = (-toggleView.clientWidth + -371 + offsetX).toString();
+    var toggleViewHeight = (-toggleView.clientHeight + -269 + offsetY).toString();
     toggleView.style.transform =
       "translate(" + toggleViewWidth + "px," + toggleViewHeight + "px)";
   </script>
