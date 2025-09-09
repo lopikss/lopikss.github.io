@@ -42,7 +42,6 @@
       overflow:hidden;
     }
 
-    /* Fullscreen styles for stage only */
     #stage:fullscreen,
     #stage:-webkit-full-screen,
     #stage:-moz-full-screen {
@@ -50,7 +49,6 @@
       height: 100vh !important;
     }
 
-    /* Loader overlay (inside stage) */
     #loader {
       position:absolute;
       inset:0;
@@ -60,10 +58,9 @@
       z-index:3;
       pointer-events:none;
       font-size:16px;
-      display:none; /* hidden initially */
+      display:none;
     }
 
-    /* Instructions overlay */
     #instructions-overlay {
       position: absolute;
       inset: 0;
@@ -84,7 +81,7 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      pointer-events: auto; /* allows interaction with text and links */
+      pointer-events: auto;
     }
 
     #instructions-overlay p {
@@ -99,7 +96,6 @@
       text-decoration:underline;
     }
 
-    /* small floating 'show HUD' button when HUD hidden */
     #show-hud-btn {
       position:absolute;
       right:12px;
@@ -113,10 +109,9 @@
       background-color:transparent;
       z-index:6;
       cursor:pointer;
-      display:none; /* only visible when HUD hidden */
+      display:none;
     }
 
-    /* HUD under the game (not overlapping) */
     #hud {
       width: 100%;
       background: var(--panel);
@@ -129,10 +124,8 @@
       gap:12px;
     }
 
-    /* left & right groups */
     .hud-left, .hud-right { display:flex; align-items:center; gap:10px; }
 
-    /* Input + load button */
     #game-url {
       width: 360px;
       max-width: 48vw;
@@ -153,7 +146,6 @@
     }
     #load-game-btn:hover { background:#444; }
 
-    /* Icon buttons */
     .icon-btn {
       width:36px;
       height:36px;
@@ -167,10 +159,8 @@
     }
     .icon-btn:hover { transform:scale(1.06); filter:brightness(1.12); }
 
-    /* Remove tooltips entirely */
     .icon-btn::after { display: none; }
 
-    /* Right-aligned controls */
     .hud-right { gap:8px; }
 
     @media (max-width: 860px) {
@@ -184,7 +174,6 @@
 <body>
   <div id="app">
     <div class="stage-wrap">
-      <!-- Stage -->
       <div id="stage" aria-label="Game stage">
         <div id="loader">Loading game…</div>
 
@@ -199,12 +188,12 @@
           </div>
         </div>
 
-        <!-- small always-available button that appears when HUD is hidden -->
+
         <button id="show-hud-btn" title="Show controls" aria-label="Show controls"
-          style="background-image:url('https://cdn-icons-png.flaticon.com/512/3687/3687641.png');"></button>
+          style="background-image:url('https://cdn-icons-png.flaticon.com/512/3687/3687651.png');"></button>
       </div>
 
-      <!-- HUD (under the game) -->
+
       <div id="hud" role="toolbar" aria-label="Game controls">
         <div class="hud-left">
           <input id="game-url" type="text" placeholder="Paste .swf link here (e.g. https://.../game.swf)" />
@@ -228,7 +217,6 @@
   </div>
 
   <script>
-    // DOM
     const stage = document.getElementById('stage');
     const loader = document.getElementById('loader');
     const instructionsOverlay = document.getElementById('instructions-overlay');
@@ -245,7 +233,6 @@
     let rufflePlayer = null;
     let hudHidden = false;
 
-    // Initialize Ruffle and load SWF
     function initRuffle(gameUrl) {
       stage.querySelectorAll('ruffle-player, iframe, .ruffle-player').forEach(n => n.remove());
       loader.style.display = 'grid';
@@ -295,7 +282,6 @@
       showHudBtn.style.display = hudHidden ? 'block' : 'none';
     }
 
-    // Load game button
     loadBtn.addEventListener('click', () => {
       const url = gameInput.value.trim();
       const swfRegex = /\.swf($|\?)/i;
@@ -307,7 +293,6 @@
       initRuffle(url);
     });
 
-    // Credits button
     creditsBtn.addEventListener('click', () => {
       window.open('https://lopikss.github.io/webhost/credits.html', '_blank', 'noopener');
     });
@@ -316,14 +301,13 @@
     showHudBtn.addEventListener('click', () => setHudHidden(false));
 
     fsBtn.addEventListener('click', () => {
-      const el = stage; // ONLY stage fullscreen
+      const el = stage;
       if (el.requestFullscreen) el.requestFullscreen();
       else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
       else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
       else if (el.msRequestFullscreen) el.msRequestFullscreen();
     });
 
-    // Keyboard shortcuts ignoring input focus
     document.addEventListener('keydown', (e) => {
       const active = document.activeElement;
       if (active === gameInput) return;
