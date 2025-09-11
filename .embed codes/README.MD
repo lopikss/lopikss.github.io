@@ -2,7 +2,7 @@
 
 Embed Flash games into your own website no downloads or browser extensions required.  
 
-All features will work by **only changing the link at the top of the code**.  
+All features will work by **only changing the game link at the top of the code**.  
 Everything else will adapt automatically.  
 
 ---
