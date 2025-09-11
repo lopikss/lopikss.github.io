@@ -1,6 +1,6 @@
 # Ruffle Embed Code
 
-Embed Flash games into your own website — no downloads or browser extensions required.  
+Embed Flash games into your own website no downloads or browser extensions required.  
 
 All features will work by **only changing the link at the top of the code**.  
 Everything else will adapt automatically.  
