@@ -5,7 +5,6 @@ Embed Flash games into your own website no downloads or browser extensions requi
 All features will work by **only changing the game link at the top of the code**.  
 Everything else will adapt automatically.  
 
----
 
 ## Recommended Version
 If you’re new to HTML, you may want to start with **`OLD_EasyRuffleEmbedCode.html`**.  
@@ -13,7 +12,6 @@ If you’re new to HTML, you may want to start with **`OLD_EasyRuffleEmbedCode.h
 > - `OLD_RuffleEmbedCode.html` is still maintained and should work as long as Ruffle does.  
 > - The “OLD_” prefix is only there because the improved version is now in `index.html`.  
 
----
 
 ## Features
 
@@ -28,7 +26,6 @@ If you’re new to HTML, you may want to start with **`OLD_EasyRuffleEmbedCode.h
 4. Download `.swf` button  
 5. More features coming soon  
 
----
 
 ## Notes
 - The fullscreen button will **not work on sites published with** [Google Sites](https://sites.google.com) due to restrictions that cannot be bypassed.  
