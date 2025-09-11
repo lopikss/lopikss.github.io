@@ -1,21 +1,15 @@
-# ruffle embed code
-embed flash games in to your own website. without needing to download enything or install an browser extention.
-<br />
-all features will work with only changing the link at the top of the code all the other features will adapt and work
-<br />
-<br />
-i do recomand using EasyRuffleEmbedCode.html if your unknown to html
+# Ruffle Embed Code
 
-## features for EasyRuffleEmbedCode.html
-1. fullscreen button
-2. simple embedding
+Welcome to my version of a **Ruffle embed code**.  
 
-## features for RuffleEmbedCode.html
-1. fullscreen button
-2. simple embedding 
-3. toggle-view button
-4. download.swf button
-5. more features comming
-<br />
-<br />
-note that the fullscreen button will not work on a website published on https://sites.google.com becouse of some restrictions i canot bypass
+- The old codes can be found in the [`.embed codes`](./.embed%20codes) folder.  
+  These are older versions that you are **free to use**.  
+
+---
+
+## New Code
+The new code is in [`index.html`](./index.html).  
+
+⚠️ If you want to use this code on **any website**, please reach out first.  
+
+📩 Discord: **lopikss**
