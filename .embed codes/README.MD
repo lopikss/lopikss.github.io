@@ -10,7 +10,7 @@ Everything else will adapt automatically.
 If you’re new to HTML, you may want to start with **`OLD_EasyRuffleEmbedCode.html`**.  
 > ⚠️ Note: This version is very outdated, even more so than `OLD_RuffleEmbedCode.html`.  
 > - `OLD_RuffleEmbedCode.html` is still maintained and should work as long as Ruffle does.  
-> - The “OLD_” prefix is only there because the improved version is now in `index.html`.  
+> - The “OLD_” prefix is only there because the improved version is now on `https://lopikss.github.io` (not for public use).  
 
 
 ## Features
