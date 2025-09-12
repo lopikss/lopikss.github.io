@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Flash Game Player</title>
+
+  <!-- Ruffle emulator -->
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+  <style>
+    :root {
+      --stage-w: 800px;
+      --stage-h: 600px;
+      --hud-padding: 10px 14px;
+      --bg: #111;
+      --panel: rgba(33,34,51,0.95);
+    }
+    * { box-sizing: border-box; }
+    html,body { height:100%; margin:0; background:var(--bg); color:#fff; font-family:Inter, system-ui, Arial, sans-serif; }
+
+    #app { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
+
+    .stage-wrap {
+      width: var(--stage-w);
+      max-width: 95vw;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
+    }
+
+    /* Game stage */
+    #stage {
+      width: 100%;
+      height: var(--stage-h);
+      max-height: calc(95vw * 0.75);
+      background:#000;
+      border-radius:8px;
+      border:2px solid #333;
+      position:relative;
+      overflow:hidden;
+    }
+
+    #stage:fullscreen,
+    #stage:-webkit-full-screen,
+    #stage:-moz-full-screen {
+      width: 100vw !important;
+      height: 100vh !important;
+    }
+
+    #loader {
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
+      background: rgba(0,0,0,0.35);
+      z-index:3;
+      pointer-events:none;
+      font-size:16px;
+      display:none;
+    }
+
+    #instructions-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.6);
+      border-radius: 12px;
+      padding: 20px;
+      z-index: 5;
+      text-align: center;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    #instructions-overlay div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      pointer-events: auto;
+    }
+
+    #instructions-overlay p {
+      background: rgba(33,34,51,0.9);
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 0;
+    }
+
+    #instructions-overlay p a {
+      color:#4ea1ff;
+      text-decoration:underline;
+    }
+
+    #show-hud-btn {
+      position:absolute;
+      right:12px;
+      bottom:12px;
+      width:36px;
+      height:36px;
+      border-radius:8px;
+      border:none;
+      background-size:cover;
+      background-repeat:no-repeat;
+      background-color:transparent;
+      z-index:6;
+      cursor:pointer;
+      display:none;
+    }
+
+    #hud {
+      width: 100%;
+      background: var(--panel);
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: var(--hud-padding);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+      gap:12px;
+    }
+
+    .hud-left, .hud-right { display:flex; align-items:center; gap:10px; }
+
+    #game-url {
+      width: 360px;
+      max-width: 48vw;
+      padding:6px 8px;
+      border-radius:6px;
+      border:1px solid #444;
+      background:#121212;
+      color:#fff;
+      font-size:14px;
+    }
+    #load-game-btn {
+      padding:6px 10px;
+      border-radius:6px;
+      border:none;
+      background:#2f2f3a;
+      color:#fff;
+      cursor:pointer;
+    }
+    #load-game-btn:hover { background:#444; }
+
+    .icon-btn {
+      width:36px;
+      height:36px;
+      border-radius:8px;
+      border:none;
+      background-size:cover;
+      background-repeat:no-repeat;
+      background-color:transparent;
+      cursor:pointer;
+      position:relative;
+    }
+    .icon-btn:hover { transform:scale(1.06); filter:brightness(1.12); }
+
+    .icon-btn::after { display: none; }
+
+    .hud-right { gap:8px; }
+
+    @media (max-width: 860px) {
+      #game-url { width: 200px; }
+      #hud { flex-direction:column; align-items:stretch; gap:8px; }
+      .hud-left, .hud-right { justify-content:center; }
+      .hud-right { align-self:flex-end; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="stage-wrap">
+      <div id="stage" aria-label="Game stage">
+        <div id="loader">Loading game…</div>
+
+        <!-- Instructions overlay -->
+        <div id="instructions-overlay">
+          <div>
+            <p>To play a game, enter a .swf link below and click "Load Game".</p>
+            <p style="margin-top:8px; font-size:13px; color:#ddd;">
+              If you don’t have a .swf file, you can find some 
+              <a href="https://github.com/lopikss/lopikss.github.io/tree/main/games" target="_blank">here</a>.
+            </p>
+          </div>
+        </div>
+
+
+        <button id="show-hud-btn" title="Show controls" aria-label="Show controls"
+          style="background-image:url('https://cdn-icons-png.flaticon.com/512/3687/3687651.png');"></button>
+      </div>
+
+
+      <div id="hud" role="toolbar" aria-label="Game controls">
+        <div class="hud-left">
+          <input id="game-url" type="text" placeholder="Paste .swf link here (e.g. https://.../game.swf)" />
+          <button id="load-game-btn">Load game</button>
+
+          <button id="credits-btn" class="icon-btn"
+            style="background-image:url('https://cdn-icons-png.flaticon.com/512/6736/6736354.png');" aria-label="Credits"></button>
+        </div>
+
+        <div class="hud-right">
+          <button id="toggle-btn" class="icon-btn"
+            style="background-image:url('https://cdn-icons-png.flaticon.com/512/3687/3687641.png');" aria-label="Hide controls"></button>
+
+          <button id="fullscreen-btn" class="icon-btn"
+            style="background-image:url('https://cdn-icons-png.flaticon.com/512/4705/4705983.png');" aria-label="Fullscreen"></button>
+        </div>
+      </div>
+
+      <div id="status" aria-live="polite" style="font-size:13px; opacity:0.85; margin-top:6px;"></div>
+    </div>
+  </div>
+
+  <script>
+    const stage = document.getElementById('stage');
+    const loader = document.getElementById('loader');
+    const instructionsOverlay = document.getElementById('instructions-overlay');
+    const statusBox = document.getElementById('status');
+    const hud = document.getElementById('hud');
+    const showHudBtn = document.getElementById('show-hud-btn');
+
+    const gameInput = document.getElementById('game-url');
+    const loadBtn = document.getElementById('load-game-btn');
+    const creditsBtn = document.getElementById('credits-btn');
+    const toggleBtn = document.getElementById('toggle-btn');
+    const fsBtn = document.getElementById('fullscreen-btn');
+
+    let rufflePlayer = null;
+    let hudHidden = false;
+
+    function initRuffle(gameUrl) {
+      stage.querySelectorAll('ruffle-player, iframe, .ruffle-player').forEach(n => n.remove());
+      loader.style.display = 'grid';
+      loader.textContent = 'Loading game…';
+      try {
+        window.RufflePlayer = window.RufflePlayer || {};
+        const ruffle = window.RufflePlayer.newest();
+        rufflePlayer = ruffle.createPlayer();
+        rufflePlayer.style.width = '100%';
+        rufflePlayer.style.height = '100%';
+        stage.appendChild(rufflePlayer);
+
+        rufflePlayer.load(gameUrl).then(() => {
+          requestAnimationFrame(() => {
+            loader.style.display = 'none';
+            status('Game loaded.');
+          });
+        }).catch(err => {
+          loader.textContent = 'Failed to load.';
+          console.error(err);
+          status('Error: could not load .swf (check URL/CORS).');
+        });
+
+        setTimeout(() => {
+          if (loader.style.display !== 'none') {
+            loader.style.display = 'none';
+            status('Load fallback: if you see a black screen, Ruffle may not fully support this SWF.');
+          }
+        }, 4000);
+      } catch (err) {
+        loader.textContent = 'Ruffle init error.';
+        console.error(err);
+        status('Ruffle initialization error.');
+      }
+    }
+
+    function status(msg) {
+      statusBox.textContent = msg || '';
+      if (msg) {
+        setTimeout(() => { if (statusBox.textContent === msg) statusBox.textContent = ''; }, 3000);
+      }
+    }
+
+    function setHudHidden(hidden) {
+      hudHidden = !!hidden;
+      hud.style.display = hudHidden ? 'none' : 'flex';
+      showHudBtn.style.display = hudHidden ? 'block' : 'none';
+    }
+
+    loadBtn.addEventListener('click', () => {
+      const url = gameInput.value.trim();
+      const swfRegex = /\.swf($|\?)/i;
+      if (!swfRegex.test(url)) {
+        alert('Please enter a valid .swf URL (must end with .swf).');
+        return;
+      }
+      instructionsOverlay.style.display = 'none';
+      initRuffle(url);
+    });
+
+    creditsBtn.addEventListener('click', () => {
+      window.open('https://lopikss.github.io/webhost/credits.html', '_blank', 'noopener');
+    });
+
+    toggleBtn.addEventListener('click', () => setHudHidden(true));
+    showHudBtn.addEventListener('click', () => setHudHidden(false));
+
+    fsBtn.addEventListener('click', () => {
+      const el = stage;
+      if (el.requestFullscreen) el.requestFullscreen();
+      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+      else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
+      else if (el.msRequestFullscreen) el.msRequestFullscreen();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      const active = document.activeElement;
+      if (active === gameInput) return;
+
+      if (!e.key) return;
+      const k = e.key.toLowerCase();
+      if (k === 'f') fsBtn.click();
+      if (k === 'h') setHudHidden(!hudHidden);
+    });
+  </script>
+</body>
+</html>
